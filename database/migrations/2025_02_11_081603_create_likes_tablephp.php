@@ -13,9 +13,12 @@ class CreateLikesTablephp extends Migration
      */
     public function up()
     {
-        Schema::create('likes_tablephp', function (Blueprint $table) {
+        Schema::create('likes', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('user_id')->constrained('users');
+            $table->foreignId('post_id')->constrained('posts');
             $table->timestamps();
+            $table->unique(['user_id', 'post_id']);
         });
     }
 
