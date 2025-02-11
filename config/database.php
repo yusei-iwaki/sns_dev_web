@@ -2,10 +2,10 @@
 
 use Illuminate\Support\Str;
 
-$dbHost = "172.250.0.4";
-$dbUser = "root";
-$dbPassword = "uytsh87syJa";
-$dbName = "my_database";
+// $dbHost = "172.250.1.4";
+// $dbUser = "admin";
+// $dbPassword = "adminpass";
+// $dbName = "sns_dev";
 
 return [
 
@@ -41,23 +41,18 @@ return [
     'connections' => [
         'mysql' => [
             'driver' => 'mysql',
-            'url' => env('DATABASE_URL'),
-            'host' => $dbHost,
-            'port' => "3306",
-            'database' => $dbName,
-            'username' => $dbUser,
-            'password' => $dbPassword,
-            'unix_socket' => '',
-            'charset' => 'utf8',
-            'collation' => 'utf8_unicode_ci',
+            'host' => env('DB_HOST', '127.0.0.1'),
+            'port' => env('DB_PORT', '3306'),
+            'database' => env('DB_DATABASE', 'forge'),
+            'username' => env('DB_USERNAME', 'forge'),
+            'password' => env('DB_PASSWORD', ''),
+            'unix_socket' => env('DB_SOCKET', ''),
+            'charset' => 'utf8mb4',
+            'collation' => 'utf8mb4_unicode_ci',
             'prefix' => '',
-            'prefix_indexes' => true,
             'strict' => true,
             'engine' => null,
-            'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
-        ]
+        ],
     ],
 
     /*
